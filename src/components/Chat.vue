@@ -1,4 +1,5 @@
 <script setup>
+import dayjs from '~/composables/dayjs'
 import airgram from '~/airgram'
 const props = defineProps({
   id: [Number],
@@ -43,9 +44,14 @@ onBeforeMount(async () => {
         </div>
       </div>
     </div>
-    <div class="w-full chat-info flex flex-col items-start justify-center">
-      <div class="title font-bold">
-        {{ chat.title }}
+    <div class="w-full chat-info flex flex-nowrap flex-col items-start justify-center">
+      <div class="flex flex-nowrap justify-between w-full">
+        <div class="title font-bold">
+          {{ chat.title }}
+        </div>
+        <div class="date text-sm text-gray-500">
+          {{ dayjs(chat.lastMessage.date * 1000).calendar() }}
+        </div>
       </div>
       <div class="w-full flex justify-between items-center gap-1">
         <div>

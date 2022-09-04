@@ -22,7 +22,7 @@
     "@vueuse/core": "^9.1.0",
     "@vueuse/head": "^0.7.9",
     "@vueuse/sound": "^1.1.7",
-    "moment": "^2.29.4",
+    "dayjs": "^1.11.5",
     "nprogress": "^0.2.0",
     "pinia": "^2.0.17",
     "sass": "^1.54.7",

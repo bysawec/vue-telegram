@@ -1,8 +1,8 @@
 <script setup>
 import { VideoPlayer } from '@videojs-player/vue'
 import 'video.js/dist/video-js.css'
-import moment from 'moment'
 import airgram from '~/airgram'
+import dayjs from '~/composables/dayjs'
 const props = defineProps({
   message: [Object],
   content: [Object],
@@ -84,7 +84,7 @@ onMounted(async () => {
         {{ content?.caption?.text }}
       </div>
     </div>
-    <span class="text-xs text-gray-500 absolute right-0 bottom-0  pb-5px px-2">{{ moment(message.date * 1000).fromNow() }}</span>
+    <span class="text-xs text-gray-500 absolute right-0 bottom-0  pb-5px px-2">{{ dayjs(message.date * 1000).fromNow() }}</span>
   </div>
 </template>
 

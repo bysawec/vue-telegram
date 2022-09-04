@@ -53,11 +53,12 @@ airgram.on('updateAuthorizationState', (event) => {
 
 <template>
   <div class="h-full flex gap-2 flex-col justify-center items-center">
-    <FormInput v-model="number" placeholder="Number" :disabled="step > 0" />
+    <FormInput v-model="number" placeholder="Number" :disabled="step > 0" @keyup.enter="signIn" />
     <FormInput
-      v-show="step > 0" v-model="code" type="text" :placeholder="codeError ? 'Invalid Code' : 'Сode'" :disabled="step > 1"
+      v-show="step > 0"
+      v-model="code" type="text" :placeholder="codeError ? 'Invalid Code' : 'Сode'" :disabled="step > 1" @keyup.enter="signIn"
     />
-    <FormInput v-show="step > 1" v-model="password" if type="password" placeholder="Password" :disabled="step > 2" />
+    <FormInput v-show="step > 1" v-model="password" if type="password" placeholder="Password" :disabled="step > 2" @keyup.enter="signIn" />
     <FormButton @click="signIn">
       {{ options.button[step] }}
     </FormButton>
