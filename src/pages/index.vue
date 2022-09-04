@@ -18,7 +18,6 @@ onMounted(async () => {
   const me = await store.getMe()
   console.log(me)
   const resp = await store.getChats(40)
-  console.log('CHATS', loadedChats)
 })
 airgram.on('updateUnreadMessageCount', (evt) => {
   console.log(evt)

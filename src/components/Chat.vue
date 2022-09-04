@@ -49,8 +49,8 @@ onBeforeMount(async () => {
         <div class="title font-bold">
           {{ chat.title }}
         </div>
-        <div class="date text-sm text-gray-500">
-          {{ dayjs(chat.lastMessage.date * 1000).calendar() }}
+        <div v-if="chat?.lastMessage" class="date text-sm text-gray-500">
+          {{ dayjs(chat?.lastMessage?.date * 1000).calendar() }}
         </div>
       </div>
       <div class="w-full flex justify-between items-center gap-1">
