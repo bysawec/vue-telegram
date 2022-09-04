@@ -1,6 +1,6 @@
 # vue-telegram
 
-##Instruction
+## Instruction
 ### 1. Clone this repo
 ### 2. Install packages with pnpm or npm
 ### 3. Create .env file and set 
