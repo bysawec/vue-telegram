@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
     FormInput: typeof import('./components/FormInput.vue')['default']
     Header: typeof import('./components/Header.vue')['default']
     Message: typeof import('./components/Message.vue')['default']
+    MessageInput: typeof import('./components/MessageInput.vue')['default']
     OpenedChat: typeof import('./components/OpenedChat.vue')['default']
     README: typeof import('./components/README.md')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

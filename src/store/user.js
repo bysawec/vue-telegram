@@ -9,6 +9,26 @@ export const useUserStore = defineStore('User', {
     chatIds: [],
   }),
   actions: {
+    async sendPhoto(chatId, text, data, messageThreadId = 0, replyToMessageId = 0) {
+      console.log('sending photo', text, data)
+      const resp = await airgram.api.sendMessage({
+        chatId,
+        inputMessageContent: {
+          _: 'inputMessagePhoto',
+          photo: {
+            _: 'inputFileBlob',
+            data,
+          },
+          thumbnail: null,
+          caption: {
+            text,
+          },
+          messageThreadId,
+          replyToMessageId,
+        },
+      })
+      return resp
+    },
     async sendMessage(chatId, text, messageThreadId = 0, replyToMessageId = 0) {
       const resp = await airgram.api.sendMessage({
         chatId,

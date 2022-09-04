@@ -13,15 +13,20 @@ const photo = ref()
 const src = ref({})
 onMounted(async () => {
   console.log(props.content)
+  if (!props.content)
+    return
   if (props.content._ === 'messagePhoto') {
+    console.log(props.content.photo.sizes)
+    if (!props.content.photo.sizes.length)
+      return
     const image = await airgram.api.downloadFile({
-      fileId: props.content?.photo.sizes[2].photo.id,
+      fileId: props.content?.photo?.sizes[2]?.photo?.id || props.content?.photo?.sizes[1]?.photo?.id || props.content?.photo?.sizes[0]?.photo?.id,
       priority: 1,
       synchronous: true,
     })
 
     const { response } = await airgram.api.readFilePart({
-      fileId: props.content?.photo.sizes[2].photo.id,
+      fileId: props.content?.photo?.sizes[2]?.photo?.id || props.content?.photo?.sizes[1]?.photo?.id || props.content?.photo?.sizes[0]?.photo?.id,
     })
     photo.value = URL.createObjectURL(response.data)
   }

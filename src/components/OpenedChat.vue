@@ -7,12 +7,31 @@ const store = useUserStore()
 const historyEl = ref()
 const messages = ref([])
 const messageInput = ref('')
+const attachment = ref()
+const blobToImage = (blob) => {
+  return new Promise((resolve) => {
+    const url = URL.createObjectURL(blob)
+    const img = new Image()
+    img.onload = () => {
+      URL.revokeObjectURL(url)
+      resolve(img)
+    }
+    img.src = url
+  })
+}
 const sendMessage = async () => {
-  const resp = await store.sendMessage(props.id, messageInput.value)
+  let resp
+  if (attachment.value)
+    resp = await store.sendPhoto(props.id, messageInput.value, attachment.value)
+  else resp = await store.sendMessage(props.id, messageInput.value)
+
+  console.log(resp)
   if (resp.response?.sendingState)
     messageInput.value = ''
 }
-
+const attach = async (file) => {
+  attachment.value = file
+}
 onMounted(async () => {
   console.log(historyEl.value)
   console.log('openedChat mounted')
@@ -35,7 +54,7 @@ onBeforeUpdate(() => {
       </transition-group>
     </div>
     <div class="input w-full mt-auto">
-      <FormInput v-model="messageInput" placeholder="Написать сообщение..." @keydown.enter="sendMessage" />
+      <MessageInput v-model="messageInput" placeholder="Написать сообщение..." @keydown.enter="sendMessage" @input-file="attach" />
     </div>
   </div>
 </template>
