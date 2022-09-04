@@ -7,3 +7,5 @@
 ### _VITE_APP_ID_ to your telegram app id
 ### _VITE_APP_HASH_ to your telegram app hash
 ### run app with _npm run dev_ command.
+
+![demo](https://imgur.com/50uQEGB)
