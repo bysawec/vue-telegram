@@ -6,4 +6,4 @@
 ### 3. Create .env file and set 
 ### _VITE_APP_ID_ to your telegram app id
 ### _VITE_APP_HASH_ to your telegram app hash
-### run app with npm run dev command.
+### run app with _npm run dev_ command.
