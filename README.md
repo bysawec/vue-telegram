@@ -8,4 +8,4 @@
 ### _VITE_APP_HASH_ to your telegram app hash
 ### run app with _npm run dev_ command.
 
-![demo](https://imgur.com/50uQEGB)
+![demo](https://i.imgur.com/50uQEGB.png)
